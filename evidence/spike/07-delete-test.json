@@ -1,0 +1,22 @@
+{
+  "poll0": 200,
+  "del": {
+    "http": 200,
+    "json": {
+      "status": 200
+    }
+  },
+  "poll1": {
+    "http": 400,
+    "json": {
+      "status": 400,
+      "error": "This task ID doesn't exist, or the task has expired.",
+      "error_code": "InvalidTaskId"
+    }
+  },
+  "reuse": {
+    "s": "error",
+    "e": "unknown_internal_error",
+    "m": "Request failed with status code 403"
+  }
+}

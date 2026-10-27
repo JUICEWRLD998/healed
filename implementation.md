@@ -47,7 +47,7 @@ Check: `grep -r YOUCAM_API_KEY .next/static` returns nothing.
 
 ---
 
-## Phase 1: Access spike (the decisive unknown)
+## Phase 1: Access spike (the decisive unknown) — DONE 2026-10-27, branch A
 
 **Goal:** prove the four load-bearing APIs work from our stack, pin their real response shapes, and decide
 branch A or B. Use one front-facing selfie of a real, consenting face with bare brows and no makeup, in even
