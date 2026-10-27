@@ -6,7 +6,7 @@ Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate c
 |---|---|---|---|
 | 0 | Skeleton | App builds, `/api/health` answers, key absent from client bundle. Deployed URL deferred to the end of the build. | PASSED (local) 2026-10-27 |
 | 1 | Access spike | All four APIs succeed from server code, raw JSON saved, branch written, units per consult measured. | PASSED 2026-10-27 |
-| 2 | Build contract | PRD, repo CLAUDE.md, this file, SUBMISSION.md exist; CI runs typecheck and tests, green. | NOT TESTED (CI run pending) |
+| 2 | Build contract | PRD, repo CLAUDE.md, this file, SUBMISSION.md exist; CI runs typecheck and tests, green. | PARTIAL 2026-10-27: files exist, typecheck and tests green locally; GitHub Actions jobs fail before any step starts (runner_id 0), needs account check |
 | 3 | Engine | All engine tests green; `npm test` output pasted here. | NOT TESTED |
 | 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | NOT TESTED |
 | 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
