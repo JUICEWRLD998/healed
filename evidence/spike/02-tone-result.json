@@ -1,0 +1,31 @@
+{
+  "http": 200,
+  "ms": 443,
+  "json": {
+    "status": 200,
+    "data": {
+      "error": null,
+      "results": {
+        "color": {
+          "eye_color": "#878684",
+          "eye_color_name": "Gray",
+          "lip_color": "#e0868a",
+          "eyebrow_color": "#a17a63",
+          "skin_color": "#b3947e",
+          "hair_color": "#FAF0BE",
+          "hair_color_name": "Blonde"
+        },
+        "face_quality": {
+          "has_face": true,
+          "area": "good",
+          "frontal": "notgood",
+          "lighting": "good",
+          "faceangle": "downward"
+        }
+      },
+      "task_status": "success"
+    }
+  },
+  "totalMs": 26725,
+  "unitsUsed": 20
+}

@@ -1,0 +1,20 @@
+{
+  "http": 200,
+  "ms": 508,
+  "json": {
+    "status": 200,
+    "data": {
+      "task_id": "wTJzqh63FrzRHhc5gY1IeF8fAKeN2QQA1OEX3tsx4Suob4F9CgCG0mJdf9xyD8ehSpcgV8WTLEnG8Q2PXjtLzQ"
+    }
+  },
+  "request": {
+    "src_file_id": "wTJzqh63FrzRHhc5gY1IeF8fAKeN2QQA1OEX3tsx4SsLbKfeLEmuXUa9yH4wuc2K",
+    "face_angle_strictness_level": "flexible",
+    "dst_actions": [
+      "oiliness",
+      "pore",
+      "redness",
+      "skin_type"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "http": 200,
+  "ms": 410,
+  "json": {
+    "status": 200,
+    "data": {
+      "task_id": "bGhoKuAp7x4Fr9p4lw5UgIDjmICd0zyZihj1c6EFJP9RInD5j19zas8zXg4rfOq8d-BTT-LvvMAmKHuvXEbI5Q"
+    }
+  },
+  "request": {
+    "src_file_id": "bGhoKuAp7x4Fr9p4lw5UgIDjmICd0zyZihj1c6EFJP8LbKfeLEmuXUa9yH4wuc2K",
+    "version": "1.0",
+    "effects": [
+      {
+        "category": "lip_color",
+        "shape": {
+          "name": "original"
+        },
+        "style": {
+          "type": "ombre",
+          "blendStrength": 50,
+          "innerColorRatio": 40,
+          "innerRatio": 40,
+          "featherStrength": 60
+        },
+        "palettes": [
+          {
+            "color": "#c4707a",
+            "texture": "sheer",
+            "colorIntensity": 35,
+            "transparencyIntensity": 50
+          },
+          {
+            "color": "#d98a93",
+            "texture": "sheer",
+            "colorIntensity": 35,
+            "transparencyIntensity": 50
+          }
+        ]
+      }
+    ]
+  }
+}

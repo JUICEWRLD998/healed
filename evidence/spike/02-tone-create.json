@@ -1,0 +1,14 @@
+{
+  "http": 200,
+  "ms": 717,
+  "json": {
+    "status": 200,
+    "data": {
+      "task_id": "bGhoKuAp7x4Fr9p4lw5UgIDjmICd0zyZihj1c6EFJP9B1uLsUMiJ5oIwVdXKWXyGaWDS9eILM6KP1umZGeEfHw"
+    }
+  },
+  "request": {
+    "src_file_id": "bGhoKuAp7x4Fr9p4lw5UgIDjmICd0zyZihj1c6EFJP8LbKfeLEmuXUa9yH4wuc2K",
+    "face_angle_strictness_level": "flexible"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "http": 200,
+  "ms": 459,
+  "json": {
+    "status": 200,
+    "data": {
+      "error": null,
+      "results": {
+        "timed": 2236,
+        "fitzpatrick_scale": "II"
+      },
+      "task_status": "success"
+    }
+  },
+  "totalMs": 6554,
+  "unitsUsed": 10
+}
