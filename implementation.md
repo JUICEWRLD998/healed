@@ -183,7 +183,7 @@ type Advice = { technique: Service; reasons: string[]; flags: string[] };   // e
 
 ---
 
-## Phase 4: The YouCam adapter (real + replay)
+## Phase 4: The YouCam adapter (real + replay) — DONE 2026-10-27
 
 **Goal:** one interface, two adapters, in `src/youcam/`.
 

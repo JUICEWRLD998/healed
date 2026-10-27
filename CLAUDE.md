@@ -33,7 +33,8 @@
 - Lip VTO needs `style.blendStrength`, `style.innerColorRatio`, `palettes[].transparencyIntensity`, two palettes.
 - Brow intensity and definition change the render only a little: carry AGE in the `color` hex.
 - Renders smooth skin. Result URLs are signed and expire in 2 hours.
-- Measured units: tone 20, Fitzpatrick 10, skin 9, render 1.
+- Measured units: tone 20, Fitzpatrick 10, skin 9, render 1. One full consult is 46 (7 renders), about 51 s wall-clock.
+- Skin scores are higher = healthier. Engine severity = 100 - raw_score (use raw_score, not the inflated ui_score).
 
 ## Framework and shell gotchas
 - `next build` rewrites `tsconfig.json`. Commit the normalised version.

@@ -8,7 +8,7 @@ Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate c
 | 1 | Access spike | All four APIs succeed from server code, raw JSON saved, branch written, units per consult measured. | PASSED 2026-10-27 |
 | 2 | Build contract | PRD, repo CLAUDE.md, this file, SUBMISSION.md exist; CI runs typecheck and tests, green. | PARTIAL 2026-10-27: files exist, typecheck and tests green locally; GitHub Actions jobs fail before any step starts (runner_id 0), needs account check |
 | 3 | Engine | All engine tests green; `npm test` output pasted here. | PASSED 2026-10-27 (39 tests, see below) |
-| 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | NOT TESTED |
+| 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | PASSED 2026-10-27 (66 tests; live consult 46 units, see below) |
 | 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
 | 6 | UI | ui-studio scorer passes on the rendered page; screenshots at 8 widths in `evidence/ui/`. | NOT TESTED |
 | 7 | Judge surfaces | All five break-it inputs return their stated outcome on the live URL. | NOT TESTED |
@@ -83,3 +83,10 @@ Latency (median of 3): brows 6.3 s, lips 6.8 s. Tone 26.7 s and Fitzpatrick 6.6 
  Test Files  4 passed (4)
       Tests  39 passed (39)
 ```
+
+## Gate 4 evidence, 2026-10-27
+
+- Contract suite `src/youcam/contract.test.ts` runs the same assertions on the replay adapter and on the real adapter (fake network answering from the same recorded fixtures). 66 tests pass.
+- One live consult through the real adapter (`LIVE_TEST=1 npx vitest run tests/live`, receipt `evidence/live-consult-receipt.json`): upload, 3 analyses in parallel, 5 timeline renders + 2 band renders in parallel, then delete. Ledger tone 20 + Fitzpatrick 10 + skin 9 + renders 7 = **46 units**; the account balance fell 995 to 949, matching.
+- Latency of that consult: read 12.9 s, total 50.6 s. The 7 parallel renders take about 38 s together, so Gate 5's 60 s budget is tight. Watch it in Phase 5.
+- Skin Analysis scores are higher = healthier (docs; ui_score is deliberately inflated). The adapter maps oiliness, pore and redness to engine severity as 100 - raw_score, and floors oiliness at 70 when the whole-face skin type is Oily.
