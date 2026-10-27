@@ -1,0 +1,33 @@
+{
+  "http": 200,
+  "ms": 412,
+  "json": {
+    "status": 200,
+    "data": {
+      "task_id": "Bfk2wFJZIcnijTDaua-J9wbGt4gCaLQa3rOx6GZClnKSnrJ1qxDGWHlxBvRhdviDd-BTT-LvvMAmKHuvXEbI5Q"
+    }
+  },
+  "request": {
+    "src_file_id": "Bfk2wFJZIcnijTDaua+J9wbGt4gCaLQa3rOx6GZClnILbKfeLEmuXUa9yH4wuc2K",
+    "version": "1.0",
+    "effects": [
+      {
+        "category": "eyebrows",
+        "pattern": {
+          "type": "shape",
+          "name": "Curved1",
+          "curvature": 0,
+          "thickness": 0,
+          "definition": 50
+        },
+        "palettes": [
+          {
+            "color": "#6b4a3a",
+            "colorIntensity": 50,
+            "texture": "matte"
+          }
+        ]
+      }
+    ]
+  }
+}

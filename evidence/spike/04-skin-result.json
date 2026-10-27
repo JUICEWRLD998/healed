@@ -1,0 +1,15 @@
+{
+  "http": 200,
+  "ms": 455,
+  "json": {
+    "status": 200,
+    "data": {
+      "error": "error_large_face_angle",
+      "error_message": "The face in the input image is turned or tilted too far.",
+      "results": null,
+      "task_status": "error"
+    }
+  },
+  "totalMs": 3278,
+  "unitsUsed": 0
+}

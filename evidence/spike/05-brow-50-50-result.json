@@ -1,0 +1,16 @@
+{
+  "http": 200,
+  "ms": 349,
+  "json": {
+    "status": 200,
+    "data": {
+      "error": null,
+      "results": {
+        "url": "https://yce-us.s3-accelerate.amazonaws.com/ttl30/518116960211306997/123530769483/v2/aeMNNB0KmUIP8rnQ996tC5Q/76f68385-1f18-4f6a-b3a4-90694149658b.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20261027T180614Z&X-Amz-SignedHeaders=host&X-Amz-Expires=7200&X-Amz-Credential=AKIARB77EV5Y5D7DAE3S%2F20261027%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Signature=eab60946879a3520c091979b9f3f4ae7f3c4d9671909677f4e1719ebb47b71f8"
+      },
+      "task_status": "success"
+    }
+  },
+  "totalMs": 6349,
+  "unitsUsed": 1
+}

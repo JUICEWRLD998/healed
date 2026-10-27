@@ -85,9 +85,9 @@ console.log("uploaded, file_id length", id.length);
 
 const log = (k, r) => console.log(k, r.ok ? "OK" : "FAIL", `${r.ms ?? "-"}ms`, `${r.units?.toFixed?.(2) ?? "-"}u`);
 
-if (want("tone")) log("tone", await task("02-tone", "skin-tone-analysis", { src_file_id: id }));
-if (want("fitz")) log("fitz", await task("03-fitz", "fitzpatrick-scale-analyzer", { src_file_id: id }));
-if (want("skin")) log("skin", await task("04-skin", "skin-analysis", { src_file_id: id, dst_actions: ["oiliness", "pore", "redness", "skin_type"] }));
+if (want("tone")) log("tone", await task("02-tone", "skin-tone-analysis", { src_file_id: id, face_angle_strictness_level: "flexible" }));
+if (want("fitz")) log("fitz", await task("03-fitz", "fitzpatrick-scale-analyzer", { src_file_id: id, version: "1.0" }));
+if (want("skin")) log("skin", await task("04-skin", "skin-analysis", { src_file_id: id, face_angle_strictness_level: "flexible", dst_actions: ["oiliness", "pore", "redness", "skin_type"] }));
 
 const brow = (intensity, definition) => ({
   category: "eyebrows",
@@ -106,8 +106,8 @@ if (want("lips")) {
   for (const i of [60, 35, 15]) {
     const r = await task(`06-lip-${i}`, "makeup-vto", {
       src_file_id: id, version: "1.0",
-      effects: [{ category: "lip_color", shape: { name: "original" }, style: { type: "ombre" },
-        palettes: [{ color: "#c4707a", texture: "sheer", colorIntensity: i }] }],
+      effects: [{ category: "lip_color", shape: { name: "original" }, style: { type: "ombre", blendStrength: 50, innerColorRatio: 40, innerRatio: 40, featherStrength: 60 },
+        palettes: [{ color: "#c4707a", texture: "sheer", colorIntensity: i, transparencyIntensity: 50 }, { color: "#d98a93", texture: "sheer", colorIntensity: i, transparencyIntensity: 50 }] }],
     });
     log(`lip ${i}`, r);
     const url = r.last?.json?.data?.results?.url ?? r.last?.json?.results?.url;

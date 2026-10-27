@@ -6,3 +6,5 @@ node_modules
 evidence/**/*.key
 *.tsbuildinfo
 next-env.d.ts
+evidence/spike/selfie*
+evidence/spike/*.jpg
