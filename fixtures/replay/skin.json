@@ -1,0 +1,35 @@
+{
+  "oiliness": {
+    "raw_score": 69.01179504394531,
+    "ui_score": 76,
+    "output_mask_name": "oiliness_output.png"
+  },
+  "redness": {
+    "raw_score": 69.453369140625,
+    "ui_score": 76,
+    "output_mask_name": "redness_output.png"
+  },
+  "pore": {
+    "raw_score": 77.95418357849121,
+    "ui_score": 80,
+    "output_mask_name": "pore_output.png"
+  },
+  "skin_type": {
+    "whole": {
+      "skin_type": "Combination",
+      "output_mask_name": "skin_type_output.png"
+    },
+    "t_zone": {
+      "skin_type": "Oily",
+      "output_mask_name": "skin_type_t_zone_output.png"
+    },
+    "u_zone": {
+      "skin_type": "Normal",
+      "output_mask_name": "skin_type_u_zone_output.png"
+    }
+  },
+  "all": {
+    "score": 77.33333333333333
+  },
+  "skin_age": 30
+}

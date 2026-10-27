@@ -1,0 +1,32 @@
+[
+  {
+    "category": "eyebrows",
+    "colorIntensity": 80,
+    "url": "/replay/brow-80-90.jpg"
+  },
+  {
+    "category": "eyebrows",
+    "colorIntensity": 50,
+    "url": "/replay/brow-50-50.jpg"
+  },
+  {
+    "category": "eyebrows",
+    "colorIntensity": 25,
+    "url": "/replay/brow-25-20.jpg"
+  },
+  {
+    "category": "lip_color",
+    "colorIntensity": 60,
+    "url": "/replay/lip-60.jpg"
+  },
+  {
+    "category": "lip_color",
+    "colorIntensity": 35,
+    "url": "/replay/lip-35.jpg"
+  },
+  {
+    "category": "lip_color",
+    "colorIntensity": 15,
+    "url": "/replay/lip-15.jpg"
+  }
+]
