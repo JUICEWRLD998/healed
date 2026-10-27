@@ -1,5 +1,22 @@
 # Acceptance gates
 
+Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate changes.
+
+| Gate | Phase | Pass condition | Status |
+|---|---|---|---|
+| 0 | Skeleton | App builds, `/api/health` answers, key absent from client bundle. Deployed URL deferred to the end of the build. | PASSED (local) 2026-10-27 |
+| 1 | Access spike | All four APIs succeed from server code, raw JSON saved, branch written, units per consult measured. | PASSED 2026-10-27 |
+| 2 | Build contract | PRD, repo CLAUDE.md, this file, SUBMISSION.md exist; CI runs typecheck and tests, green. | NOT TESTED (CI run pending) |
+| 3 | Engine | All engine tests green; `npm test` output pasted here. | NOT TESTED |
+| 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | NOT TESTED |
+| 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
+| 6 | UI | ui-studio scorer passes on the rendered page; screenshots at 8 widths in `evidence/ui/`. | NOT TESTED |
+| 7 | Judge surfaces | All five break-it inputs return their stated outcome on the live URL. | NOT TESTED |
+| 8 | Calibration | Numbers, pair list and extractor positive control under `evidence/calibration/`; `/calibration` shows them. | NOT TESTED |
+| 9 | Submit | Submitted on Devpost, confirmation saved, live URL answering. | NOT TESTED |
+
+---
+
 ## Gate 1 findings (spike run 2026-10-27, selfie.jpg, 1040 to 995 units = 45 spent)
 
 | API | Result | Units | Latency (single run) | Notes |
