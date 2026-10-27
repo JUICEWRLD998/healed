@@ -1,0 +1,9 @@
+:root {
+  --bg: oklch(0.17 0.02 255);
+  --surface: oklch(0.21 0.025 255);
+  --line: oklch(0.3 0.03 255);
+  --text: oklch(0.95 0.01 255);
+  --muted: oklch(0.7 0.02 255);
+  --accent: oklch(0.82 0.13 168);
+  --radius: 12px;
+}
