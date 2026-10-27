@@ -7,7 +7,7 @@ Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate c
 | 0 | Skeleton | App builds, `/api/health` answers, key absent from client bundle. Deployed URL deferred to the end of the build. | PASSED (local) 2026-10-27 |
 | 1 | Access spike | All four APIs succeed from server code, raw JSON saved, branch written, units per consult measured. | PASSED 2026-10-27 |
 | 2 | Build contract | PRD, repo CLAUDE.md, this file, SUBMISSION.md exist; CI runs typecheck and tests, green. | PARTIAL 2026-10-27: files exist, typecheck and tests green locally; GitHub Actions jobs fail before any step starts (runner_id 0), needs account check |
-| 3 | Engine | All engine tests green; `npm test` output pasted here. | NOT TESTED |
+| 3 | Engine | All engine tests green; `npm test` output pasted here. | PASSED 2026-10-27 (39 tests, see below) |
 | 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | NOT TESTED |
 | 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
 | 6 | UI | ui-studio scorer passes on the rendered page; screenshots at 8 widths in `evidence/ui/`. | NOT TESTED |
@@ -37,3 +37,49 @@ Delete: `POST /s2s/v2.0/task/delete {task_id}` returns 200. The task then answer
 Latency (median of 3): brows 6.3 s, lips 6.8 s. Tone 26.7 s and Fitzpatrick 6.6 s are single runs.
 
 **Gate 1: PASSED 2026-10-27.** Units per consult in the spike: tone 20 + Fitzpatrick 10 + skin 9 + 1 per render.
+
+## Gate 3 evidence: npm test, 2026-10-27
+
+```
+ ✓ src/engine/constants.test.ts > constants.ts sources > planted control: the check flags an unsourced constant and accepts sourced ones 7ms
+ ✓ src/engine/constants.test.ts > constants.ts sources > declares constants 1ms
+ ✓ src/engine/constants.test.ts > constants.ts sources > every export const carries an E-item or ASSUMED on its line or the line above 1ms
+ ✓ src/engine/timeline.test.ts > demo claims > a cool dark-brown pigment drifts cool by year 2 (b* lower than at day 0) 14ms
+ ✓ src/engine/timeline.test.ts > demo claims > the cool drift holds for natural brow #a17a63: year 2 is cooler than day 0 2ms
+ ✓ src/engine/timeline.test.ts > demo claims > the cool drift holds for natural brow #6b4f3f: year 2 is cooler than day 0 1ms
+ ✓ src/engine/timeline.test.ts > demo claims > the cool drift holds for natural brow #c9a58c: year 2 is cooler than day 0 1ms
+ ✓ src/engine/timeline.test.ts > demo claims > the cool drift holds for natural brow #3b2e28: year 2 is cooler than day 0 1ms
+ ✓ src/engine/timeline.test.ts > demo claims > the same pigment plus a 15% warm modifier gives drift none at year 2 1ms
+ ✓ src/engine/timeline.test.ts > demo claims > microblading with oiliness 80 recommends powder brows and blurs faster than oiliness 30 1ms
+ ✓ src/engine/timeline.test.ts > invariants > powder cool: retention-driven intensity never rises and the band brackets the midpoint 6ms
+ ✓ src/engine/timeline.test.ts > invariants > powder fixed: retention-driven intensity never rises and the band brackets the midpoint 2ms
+ ✓ src/engine/timeline.test.ts > invariants > microblading oily: retention-driven intensity never rises and the band brackets the midpoint 1ms
+ ✓ src/engine/timeline.test.ts > invariants > lips: retention-driven intensity never rises and the band brackets the midpoint 2ms
+ ✓ src/engine/timeline.test.ts > invariants > day0 renders the chosen pigment exactly with no drift 1ms
+ ✓ src/engine/timeline.test.ts > invariants > the band lighter bound is lighter than the darker bound in L* once colour has faded 1ms
+ ✓ src/engine/timeline.test.ts > invariants > lip renders carry transparencyIntensity and no definition; brow renders the reverse 1ms
+ ✓ src/engine/timeline.test.ts > invariants > the same inputs give byte-identical output twice 1ms
+ ✓ src/engine/rules.test.ts > rule 1: mixing the modifier > returns the pigment unchanged with no modifier or ratio 0 12ms
+ ✓ src/engine/rules.test.ts > rule 1: mixing the modifier > moves b* up when a warm modifier is added 4ms
+ ✓ src/engine/rules.test.ts > rule 1: mixing the modifier > clamps ratio to 0-0.3 1ms
+ ✓ src/engine/rules.test.ts > rule 2: retention > is 1 at day0 and matches E8 at week6 3ms
+ ✓ src/engine/rules.test.ts > rule 2: retention > microblading loses a further 20% after year 1 2ms
+ ✓ src/engine/rules.test.ts > rule 2: retention > oily skin multiplies by 0.85 from week6 1ms
+ ✓ src/engine/rules.test.ts > rule 3: temperature > classes a cool dark brown as cool, the same brown plus warm modifier as neutral, an orange-brown as warm 1ms
+ ✓ src/engine/rules.test.ts > rule 4: drift strength > is negative for cool and zero for neutral pigment 1ms
+ ✓ src/engine/rules.test.ts > rule 4: drift strength > cool pigment drifts less on cool skin 1ms
+ ✓ src/engine/rules.test.ts > rule 4: drift strength > warm modifier lowers a cool drift smoothly 1ms
+ ✓ src/engine/rules.test.ts > rule 5: sharpness > microblading blurs faster on oily skin 1ms
+ ✓ src/engine/rules.test.ts > rule 5: sharpness > oily skin does not blur powder brows faster; they start soft 0ms
+ ✓ src/engine/rules.test.ts > rule 5: sharpness > never rises over time 1ms
+ ✓ src/engine/rules.test.ts > rule 6: lips > transparency rises as colour fades and stays within 0-100 2ms
+ ✓ src/engine/rules.test.ts > rule 7: advice > recommends powder brows for microblading on oily skin, with the reason 4ms
+ ✓ src/engine/rules.test.ts > rule 7: advice > keeps microblading on dry skin 0ms
+ ✓ src/engine/rules.test.ts > rule 7: advice > large pores also trigger the powder recommendation 0ms
+ ✓ src/engine/rules.test.ts > rule 7: advice > flags dark natural lips for neutralisation first 3ms
+ ✓ src/engine/rules.test.ts > rule 7: advice > flags Fitzpatrick IV-VI for a patch test 1ms
+ ✓ lib/config.test.ts > defaults to live 4ms
+ ✓ lib/config.test.ts > reads replay 1ms
+ Test Files  4 passed (4)
+      Tests  39 passed (39)
+```

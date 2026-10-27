@@ -116,7 +116,7 @@ Invariants that go into `CLAUDE.md`:
 
 ---
 
-## Phase 3: The healed engine (deterministic core, test-first)
+## Phase 3: The healed engine (deterministic core, test-first) — DONE 2026-10-27
 
 **Goal:** pure TypeScript in `src/engine/` that turns analysis results plus the artist's choices into render
 parameters for each time step. No network calls. Write the tests first (`test-driven-development`).
