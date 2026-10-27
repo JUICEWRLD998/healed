@@ -18,7 +18,7 @@ straight away. A later phase never blocks the recording of an earlier one.
 
 ---
 
-## Phase 0: Accounts, repo, skeleton
+## Phase 0: Accounts, repo, skeleton — DONE 2026-10-27
 
 **Goal:** a deployed empty app that holds the API key server-side.
 
@@ -42,7 +42,7 @@ straight away. A later phase never blocks the recording of an earlier one.
    - `CLAIMS.md`: each README claim and the command that reproduces it.
    - `DECISIONS.md`: newest first; each entry has a measurement, the rejected alternative and the file.
 
-**Gate 0:** the deployed URL loads, `/api/health` answers, and the key is absent from the client bundle.
+**Gate 0 (revised 2026-10-27: Vercel deploy deferred to the end of the build; key verified live via GET /s2s/v1.0/client/credit, 1040 units; local build clean):** the deployed URL loads, `/api/health` answers, and the key is absent from the client bundle.
 Check: `grep -r YOUCAM_API_KEY .next/static` returns nothing.
 
 ---
