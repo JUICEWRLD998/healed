@@ -25,6 +25,14 @@ describe("demo claims", () => {
     expect(lab(at(r, "year2").hex).b).toBeLessThan(lab(at(r, "day0").hex).b);
   });
 
+  it.each(["#a17a63", "#6b4f3f", "#c9a58c", "#3b2e28"])(
+    "the cool drift holds for natural brow %s: year 2 is cooler than day 0",
+    (browHex) => {
+      const r = renderTimeline({ ...client, browHex }, cool);
+      expect(lab(at(r, "year2").hex).b).toBeLessThan(lab(at(r, "day0").hex).b);
+    },
+  );
+
   it("the same pigment plus a 15% warm modifier gives drift none at year 2", () => {
     expect(at(renderTimeline(client, fixed), "year2").drift).toBe("none");
   });
