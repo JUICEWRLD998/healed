@@ -1,0 +1,74 @@
+{
+  "client": {
+    "skinHex": "#b78f74",
+    "browHex": "#3e3834",
+    "lipHex": "#a65b5d",
+    "hairHex": "#FAF0BE",
+    "fitzpatrick": 3,
+    "oiliness": 31,
+    "pore": 22,
+    "redness": 31
+  },
+  "advice": {
+    "technique": "powder_brow",
+    "reasons": [],
+    "flags": []
+  },
+  "steps": [
+    {
+      "step": "day0",
+      "hex": "#4a3f3d",
+      "colorIntensity": 80,
+      "definition": 40,
+      "drift": "none"
+    },
+    {
+      "step": "week6",
+      "hex": "#443f48",
+      "colorIntensity": 48,
+      "definition": 34,
+      "drift": "none"
+    },
+    {
+      "step": "year1",
+      "hex": "#433f49",
+      "colorIntensity": 40,
+      "definition": 24,
+      "drift": "cool"
+    },
+    {
+      "step": "year2",
+      "hex": "#423f4a",
+      "colorIntensity": 32,
+      "definition": 16,
+      "drift": "cool"
+    },
+    {
+      "step": "year3",
+      "hex": "#413f4b",
+      "colorIntensity": 24,
+      "definition": 12,
+      "drift": "cool"
+    }
+  ],
+  "rendered": {
+    "steps": 5,
+    "bandStep": "year2"
+  },
+  "ledger": {
+    "total": 46,
+    "tone": 20,
+    "fitzpatrick": 10,
+    "skin": 9,
+    "render": 7
+  },
+  "balance": {
+    "before": 995,
+    "after": 949,
+    "spent": 46
+  },
+  "ms": {
+    "read": 12899,
+    "total": 50565
+  }
+}
