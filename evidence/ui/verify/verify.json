@@ -1,0 +1,165 @@
+{
+ "checks": [
+  {
+   "name": "control: broken-image probe sees a missing file",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "control: missing-alt probe sees an img with no alt",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "axe snap: no serious/critical",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "axe choose: no serious/critical",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "break: invalid hex disables Show me healed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "click: Show me healed",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "filmstrip: frames captured during the scrub",
+   "ok": true,
+   "detail": "16 frames over 1149 ms"
+  },
+  {
+   "name": "axe age: no serious/critical",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "images: none broken, all have alt, none oversized",
+   "ok": true,
+   "detail": "{\"broken\":0,\"noAlt\":0,\"emptyAlt\":5,\"oversize\":0,\"n\":6}"
+  },
+  {
+   "name": "click-path: Day 0 tab shows Day 0",
+   "ok": true,
+   "detail": "Day 0"
+  },
+  {
+   "name": "click-path: Year 3 tab shows Year 3",
+   "ok": true,
+   "detail": "Year 3"
+  },
+  {
+   "name": "click-path: + warm modifier offered on a cool drift",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "click-path: modifier ends in a corrected state",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "click-path: Remove modifier restores the offer",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "click-path: Change pigment returns to Choose",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "axe card: no serious/critical",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "click-path: consent tick records consent",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "click-path: deletion outcome is stated after consent",
+   "ok": true,
+   "detail": " on this page only. Your uploaded photo and results were deleted from the analysis service.  Print consult card Start over"
+  },
+  {
+   "name": "click-path: Start over returns to Snap",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "CLS under 0.1 across the journey (one page load)",
+   "ok": true,
+   "detail": "cls=0.0049"
+  },
+  {
+   "name": "reduced motion: lands on the first drift step at once, verdict text present",
+   "ok": true,
+   "detail": "Year 1 | Year 1: Drifts cool: grey or blue cast Drifts cool: grey or blue cast"
+  },
+  {
+   "name": "control: contrast sampler reads planted 1:1 pair (light)",
+   "ok": true,
+   "detail": "ratio=1.01"
+  },
+  {
+   "name": "rendered contrast light: all 29 text runs meet AA",
+   "ok": true,
+   "detail": "min=4.85 fails=[]"
+  },
+  {
+   "name": "role hues distinct light: min dE76 >= 20",
+   "ok": true,
+   "detail": "22.3 --warm/--caution"
+  },
+  {
+   "name": "control: contrast sampler reads planted 1:1 pair (dark)",
+   "ok": true,
+   "detail": "ratio=1.01"
+  },
+  {
+   "name": "rendered contrast dark: all 29 text runs meet AA",
+   "ok": true,
+   "detail": "min=6.11 fails=[]"
+  },
+  {
+   "name": "role hues distinct dark: min dE76 >= 20",
+   "ok": true,
+   "detail": "22.1 --warm/--caution"
+  },
+  {
+   "name": "console: zero errors over the whole run",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "axe_snap": [],
+ "axe_choose": [],
+ "axe_age": [],
+ "axe_card": [],
+ "cls": 0.004852710621423029,
+ "contrast_light": {
+  "n": 29,
+  "min": 4.85,
+  "fails": [],
+  "ctlRatio": 1.01,
+  "minDE": 22.3,
+  "pair": "--warm/--caution"
+ },
+ "contrast_dark": {
+  "n": 29,
+  "min": 6.11,
+  "fails": [],
+  "ctlRatio": 1.01,
+  "minDE": 22.1,
+  "pair": "--warm/--caution"
+ }
+}

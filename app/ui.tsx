@@ -50,7 +50,7 @@ export function ModeChip({ mode, reason }: { mode: Mode; reason?: string | null 
       <span>
         {mode === "live"
           ? "Renders made from your photo just now"
-          : `Recorded renders, not your photo${reason ? `. ${reason}` : ""}`}
+          : `Recorded renders, not your photo${reason && reason !== "Replay mode is set." ? `. ${reason}` : ""}`}
       </span>
     </p>
   );

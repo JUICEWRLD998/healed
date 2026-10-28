@@ -15,3 +15,5 @@ public/replay/
 # Phase 6 screenshots show a real face: local only
 evidence/ui/*.png
 evidence/ui/*.jpg
+evidence/ui/verify/film/
+evidence/ui/verify/sheet.jpg

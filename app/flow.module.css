@@ -144,3 +144,5 @@ label.bottle { cursor: pointer; }
 .segment:hover:not([data-on="true"]) { background: color-mix(in oklch, var(--raised) 55%, transparent); }
 label.bottle:hover:not([data-on="true"]) { border-color: var(--muted); }
 .scrubLabels button:hover:not([data-on="true"]) { color: var(--ink); }
+
+.year { margin-top: 6px; }

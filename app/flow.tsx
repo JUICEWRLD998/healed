@@ -361,6 +361,11 @@ export function Flow() {
       {phase === "timeline" && timeline && step && (
         <section className={styles.screen} aria-labelledby="age">
           <div className={styles.stage}>
+            {/* base layer: the client's own photo, so the stage is never empty while a render lands */}
+            {photoUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={photoUrl} alt="" />
+            )}
             {timeline.steps.map((s, i) => {
               const u = frames[s.step];
               return u && u !== "failed" ? (
@@ -370,11 +375,13 @@ export function Flow() {
             })}
             {(() => {
               const u = frames[step.step];
-              return !u || u === "failed" ? (
-                <div role="img" aria-label={`${STEP_LABEL[step.step]} colour ${step.hex}`} style={{ position: "absolute", inset: 0, background: step.hex, display: "grid", placeItems: "end start" }}>
-                  <span className={styles.stageNote}>{u === "failed" ? "Render unavailable. Colour estimate shown." : "Rendering your photo"}</span>
-                </div>
-              ) : null;
+              if (u === "failed")
+                return (
+                  <div role="img" aria-label={`${STEP_LABEL[step.step]} colour ${step.hex}`} style={{ position: "absolute", inset: 0, background: step.hex, display: "grid", placeItems: "end start" }}>
+                    <span className={styles.stageNote}>Render unavailable. Colour estimate shown.</span>
+                  </div>
+                );
+              return !u ? <span className={styles.stageNote}>Rendering this step. Showing your original.</span> : null;
             })()}
           </div>
           <div className={styles.side}>
