@@ -7,7 +7,7 @@
 .stepper li[data-state="done"] { border-top-color: var(--accent); color: var(--ink); }
 .stepper li[data-state="now"] { border-top-color: var(--ink); color: var(--ink); font-weight: 700; }
 .stepNo { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--sunk); font-size: 0.72rem; font-variant-numeric: tabular-nums; }
-.stepper li[data-state="done"] .stepNo { background: var(--accent); color: var(--on-accent); }
+.stepper li[data-state="done"] .stepNo { background: var(--accent); color: var(--accent-ink); }
 @media (max-width: 520px) { .stepper li { font-size: 0; gap: 0; } .stepper li .stepNo { font-size: 0.72rem; } .stepper li[data-state="now"] { font-size: 0.85rem; gap: 8px; } }
 
 .screen { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
@@ -27,11 +27,11 @@
 .layer[data-on="true"] { opacity: 1; }
 .stageNote { position: absolute; left: 12px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: var(--raised); color: var(--ink); font-size: 0.8rem; font-weight: 600; }
 .guideSvg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--muted); pointer-events: none; }
-.guideOn { color: var(--on-accent); }
+.guideOn { color: var(--accent-ink); }
 
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .primary, .secondary { font: inherit; font-weight: 650; padding: 12px 20px; border-radius: var(--radius-md); cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out), opacity var(--dur-micro) var(--ease-out); }
-.primary { background: var(--accent); color: var(--on-accent); border: 0; }
+.primary { background: var(--accent); color: var(--accent-ink); border: 0; }
 .primary:hover:not(:disabled) { background: color-mix(in oklch, var(--accent) 88%, var(--ink)); }
 .primary:active:not(:disabled), .secondary:active:not(:disabled) { transform: scale(0.98); }
 .primary:disabled { opacity: 0.5; cursor: progress; }
@@ -131,3 +131,16 @@ label.bottle { cursor: pointer; }
 .signed { margin: 0; padding: 10px 14px; border-radius: var(--radius-md); background: var(--ok-wash); color: var(--accent); font-weight: 600; font-size: 0.92rem; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media print { .noprint { display: none !important; } .sheet { box-shadow: none; border-color: #999; } }
+
+/* display voice: a serif for titles and the year, the grotesk for everything you press or measure */
+.title, .year { font-family: var(--font-display), Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+.year { letter-spacing: -0.035em; }
+
+/* disabled: colour, cursor, opacity and pointer feedback all change, not opacity alone */
+.primary:disabled { background: var(--line); color: var(--muted); opacity: 0.8; cursor: not-allowed; }
+.secondary:disabled { color: var(--muted); background: var(--sunk); opacity: 0.8; cursor: not-allowed; }
+
+/* one hover channel per control */
+.segment:hover:not([data-on="true"]) { background: color-mix(in oklch, var(--raised) 55%, transparent); }
+label.bottle:hover:not([data-on="true"]) { border-color: var(--muted); }
+.scrubLabels button:hover:not([data-on="true"]) { color: var(--ink); }

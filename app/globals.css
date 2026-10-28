@@ -1,7 +1,7 @@
 @import "../src/styles/tokens.css";
 
 * { box-sizing: border-box; }
-html, body { margin: 0; background: var(--ground); color: var(--ink); }
+html, body { margin: 0; background: var(--ground); color: var(--ink); overflow-x: clip; }
 body { font-family: var(--font-grotesk), system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 p { text-wrap: pretty; }

@@ -1,7 +1,9 @@
+/* macrostructure: split-stage-ledger (client image left, verdict ledger right; ruled form for the consult card) */
 /* Healed design tokens. Porcelain ground, brow-pigment ink, one clinical teal for the primary action,
    four support hues with jobs: warm (orange drift), cool (grey-blue drift), caution (flags), rose (lips).
    Measured in docs/ui-plan.md. Motion values mirror lib/motion.ts: change both together. */
 :root {
+  --macrostructure: split-stage-ledger;
   --ground: oklch(0.962 0.009 205);
   --raised: oklch(0.985 0.005 205);
   --sunk: oklch(0.93 0.012 205);
@@ -9,7 +11,7 @@
   --ink: oklch(0.25 0.02 45);
   --muted: oklch(0.47 0.02 45);
   --accent: oklch(0.48 0.09 178);
-  --on-accent: oklch(0.98 0.01 178);
+  --accent-ink: oklch(0.98 0.01 178);
   --warm: oklch(0.55 0.13 55);
   --warm-wash: oklch(0.94 0.04 60);
   --cool: oklch(0.5 0.1 245);
@@ -40,7 +42,7 @@
     --ink: oklch(0.94 0.012 60);
     --muted: oklch(0.72 0.02 60);
     --accent: oklch(0.78 0.1 178);
-    --on-accent: oklch(0.2 0.03 178);
+    --accent-ink: oklch(0.2 0.03 178);
     --warm: oklch(0.76 0.12 58);
     --warm-wash: oklch(0.3 0.05 58);
     --cool: oklch(0.74 0.09 245);
@@ -61,7 +63,7 @@
   --ink: oklch(0.94 0.012 60);
   --muted: oklch(0.72 0.02 60);
   --accent: oklch(0.78 0.1 178);
-  --on-accent: oklch(0.2 0.03 178);
+  --accent-ink: oklch(0.2 0.03 178);
   --warm: oklch(0.76 0.12 58);
   --warm-wash: oklch(0.3 0.05 58);
   --cool: oklch(0.74 0.09 245);
