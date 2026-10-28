@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Newsreader, Schibsted_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import { Providers } from "./providers";
 import "./globals.css";
 
-const grotesk = Schibsted_Grotesk({ subsets: ["latin"], display: "swap", variable: "--font-grotesk" });
-const display = Newsreader({ subsets: ["latin"], display: "swap", variable: "--font-display", weight: ["500", "600"] });
+// Self-hosted (SIL OFL): Schibsted Grotesk and Newsreader, latin subset. next/font/google fails under Turbopack dev.
+const grotesk = localFont({
+  src: "./fonts/SchibstedGrotesk-latin.woff2",
+  weight: "400 800",
+  display: "swap",
+  variable: "--font-grotesk",
+});
+const display = localFont({
+  src: "./fonts/Newsreader-latin.woff2",
+  weight: "500 600",
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
   title: "Healed",
