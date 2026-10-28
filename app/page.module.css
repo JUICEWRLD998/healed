@@ -1,11 +1,4 @@
-.main {
-  min-height: 100dvh;
-  display: grid;
-  align-content: start;
-  justify-items: center;
-  gap: 20px;
-  padding: 24px 16px 48px;
-}
-.head { width: min(640px, 100%); display: grid; gap: 6px; }
-.head h1 { margin: 0; color: var(--accent); }
+.main { width: min(1180px, 100%); margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px) 64px; display: grid; gap: 24px; }
+.head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.head h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
 .head p { margin: 0; color: var(--muted); }

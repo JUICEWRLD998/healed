@@ -11,3 +11,7 @@ evidence/spike/*.jpg
 
 # replay render stills show a real face: local only
 public/replay/
+
+# Phase 6 screenshots show a real face: local only
+evidence/ui/*.png
+evidence/ui/*.jpg

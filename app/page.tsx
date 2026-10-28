@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <header className={styles.head}>
         <h1>Healed</h1>
-        <p>See how permanent makeup looks once it has healed and aged, before the needle touches skin.</p>
+        <p>See your brows healed before the needle.</p>
       </header>
       <Flow />
     </main>
