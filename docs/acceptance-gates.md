@@ -119,3 +119,13 @@ Gate text: `ui-studio` quality bar and scorer pass on the rendered page, screens
 - `ui-score` round 4: 77/100, controls passed, zero major tells. Known artefact: accent budget reads 40.6% because the scorer reads the tinted dark ground as an accent. The real accent covers about 0.5% of the viewport.
 - Review pass (`better-interface` with the six domain skills): two HIGH fixed (keyboard-unreachable upload, drift shown by colour only on the scrub labels), three MEDIUM and three LOW fixed. `ecc:design-system` audit: no dimension under 7 (lowest: spacing rhythm 7, ad hoc steps in `app/flow.module.css`). Semi-blind critic on the first viewport at 1280 and 375: product, primary action and most important element match the hierarchy contract.
 - Open, named: spacing has no token scale; replay renders are about 1.2 MB each (local fixtures; Phase 7 frozen run must be compressed); Live mode not re-run through the new screens (46 units); the Choose screen is a uniform rounded-card grammar.
+
+## Gate 7 evidence, 2026-10-28 (PARTIAL: five break-it inputs pass locally in Replay; live URL and frozen run NOT done)
+
+Gate text: all five break-it inputs return their stated outcome on the live URL from a clean browser.
+
+- Passed locally: `/judges` (390 px, no horizontal scroll, Replay chip) and `/api/breakit?id=` return the stated outcome for all five inputs through `explain()`, `advise()`, `renderTimeline()` and `chooseMode()`. Output in `evidence/phase7/gate7-local.json`, screenshot `evidence/phase7/judges-mobile.png` (swatches only, no face). Reproduce: `HEALED_MODE=replay npx next start -p <port>` then `node scripts/gate7-drive.cjs <port>`.
+- `/api/health` reports the effective mode (`live` only with a key and `HEALED_MODE` not `replay`) and the Snap screen now shows the Live or Replay chip before a photo exists.
+- Privacy audit: `grep -rn "console\.\|writeFile\|createWriteStream\|tmpdir" app lib src` finds nothing outside tests. The only `YOUCAM_API_KEY` read in `app/` or `lib/` is the boolean in `/api/health`. Gate 0 grep on the Phase 7 build returns nothing.
+- Two-faces outcome comes from keyword matching on `error_multiple_faces`, a code not yet seen live (UNVERIFIED, see `CLAIMS.md`). Tiny face uses `error_src_face_too_small`, observed live in Phase 1.
+- NOT done: (1) the deployed URL and clean-browser run, which wait for the deploy step; (2) the frozen production run under `evidence/frozen-run/`, which needs a consenting face and a YouCam key that this session does not have; (3) a live-mode run through `/judges` "try with your own face".
