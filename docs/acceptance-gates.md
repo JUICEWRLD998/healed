@@ -90,3 +90,21 @@ Latency (median of 3): brows 6.3 s, lips 6.8 s. Tone 26.7 s and Fitzpatrick 6.6 
 - One live consult through the real adapter (`LIVE_TEST=1 npx vitest run tests/live`, receipt `evidence/live-consult-receipt.json`): upload, 3 analyses in parallel, 5 timeline renders + 2 band renders in parallel, then delete. Ledger tone 20 + Fitzpatrick 10 + skin 9 + renders 7 = **46 units**; the account balance fell 995 to 949, matching.
 - Latency of that consult: read 12.9 s, total 50.6 s. The 7 parallel renders take about 38 s together, so Gate 5's 60 s budget is tight. Watch it in Phase 5.
 - Skin Analysis scores are higher = healthier (docs; ui_score is deliberately inflated). The adapter maps oiliness, pore and redness to engine severity as 100 - raw_score, and floors oiliness at 70 when the whole-face skin type is Oily.
+
+## Gate 5 evidence, 2026-10-28 (PARTIAL: local, not the deployed URL)
+
+Gate text: a cold visitor on the live URL gets their own timeline in under 60 s, screen-recorded. Vercel deploy is held to the end of the build (`CLAUDE.md`), so this was measured on `next build` + `next start` on localhost against the live YouCam API, driven through headless Chrome (upload `selfie2-crop.jpg`, pick cool dark brown + 15% warm modifier, click through to the consult card).
+
+| Run | Read (upload to Choose) | Timeline on screen | First render photo | Result |
+|---|---|---|---|---|
+| Live, non-progressive build | 36.1 s | 73.8 s (waited for all 7 renders) | 73.8 s | over 60 s |
+| Live, progressive build | 21.6 s | 21.9 s (engine only, 0.3 s after the click) | about 55 s from upload | timeline under 60 s |
+
+- Read latency varied between 17 s and 36 s across live runs. The 7 parallel renders took 33 to 38 s each time. Single sample per build, so this is feedback, not a benchmark.
+- Fix applied: `/api/render` now runs only the deterministic engine and returns at once; `/api/frame` renders one of the 7 slots, and the browser paints each image as it lands (`app/flow.tsx`). The timeline, drift chips, bands and advice are on screen before any render returns. Renders that are still pending show the engine colour with "Rendering your photo…".
+- What is NOT verified: a deployed URL, a cold visitor on another device, camera capture on a phone (the file-upload path was driven; `getUserMedia` was not), and the screen recording. These move to the deploy step.
+- Error path checked live: a photo where the face is too small gave "The face is too small in the photo. Move closer so the face fills most of the frame." and returned to Snap.
+- Replay path checked: with `HEALED_MODE=replay` the whole flow completes with the REPLAY chip and the Phase 1 stills (kept local in git-ignored `public/replay/`).
+- Delete after consent: `/api/remove` returned deleted in both modes.
+- Gate 0 re-check on the Phase 5 build: `grep -r YOUCAM_API_KEY .next/static` returns nothing.
+- Tests: 75 pass, 1 skipped (live test, needs `LIVE_TEST=1`). `tsc --noEmit` clean.

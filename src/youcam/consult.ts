@@ -36,13 +36,31 @@ export type Rendered = {
   band: { step: Step; lighterUrl: string; darkerUrl: string };
 };
 
+export type Slot = Step | "lighter" | "darker";
+export const SLOTS: readonly Slot[] = ["day0", "week6", "year1", "year2", "year3", "lighter", "darker"];
+export const BAND_STEP: Step = "year2";
+
+/** The render for one slot: a timeline step, or the lighter or darker bound at the band step. */
+export async function renderSlot(yc: YouCam, file: FileRef, service: Service, timeline: Timeline, slot: Slot): Promise<string> {
+  if (slot === "lighter" || slot === "darker") {
+    const b = timeline.steps.find((s) => s.step === BAND_STEP) ?? timeline.steps[timeline.steps.length - 1];
+    const edge = slot === "lighter"
+      ? { ...b, hex: b.band.lighterHex, colorIntensity: b.band.lighterIntensity }
+      : { ...b, hex: b.band.darkerHex, colorIntensity: b.band.darkerIntensity };
+    return (await yc.render(file, [effectFor(service, edge)])).url;
+  }
+  const s = timeline.steps.find((x) => x.step === slot);
+  if (!s) throw new Error("unknown slot");
+  return (await yc.render(file, [effectFor(service, s)])).url;
+}
+
 /** AGE: 5 timeline renders plus 2 band renders (lighter and darker bound at one step), all in parallel. */
 export async function renderTimelineImages(
   yc: YouCam,
   file: FileRef,
   service: Service,
   timeline: Timeline,
-  bandStep: Step = "year2",
+  bandStep: Step = BAND_STEP,
 ): Promise<Rendered> {
   const b = timeline.steps.find((s) => s.step === bandStep) ?? timeline.steps[timeline.steps.length - 1];
   const lighter = { ...b, hex: b.band.lighterHex, colorIntensity: b.band.lighterIntensity };
