@@ -20,7 +20,8 @@ export function BreakPanel() {
     setBusy(id);
     try {
       const r = await fetch(`/api/breakit?id=${id}`);
-      setOut((o) => ({ ...o, [id]: r.ok ? ((await r.json()) as BreakResult) : "error" }));
+      const body = r.ok ? ((await r.json()) as BreakResult) : ("error" as const);
+      setOut((o) => ({ ...o, [id]: body }));
     } catch {
       setOut((o) => ({ ...o, [id]: "error" }));
     } finally {
