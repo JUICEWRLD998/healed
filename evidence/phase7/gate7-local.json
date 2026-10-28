@@ -1,0 +1,16 @@
+{
+  "run": "HEALED_MODE=replay next start -p 3417, fresh Chromium context, 390x844, node scripts/gate7-drive.cjs 3417",
+  "date": "2026-10-28",
+  "url": "http://localhost:3417 (NOT the deployed URL: deploy happens at the end of the build)",
+  "noHorizontalScroll": true,
+  "judgesChip": "Replay",
+  "snapChip": "Replay",
+  "health": {"mode":"replay","configured":"replay","hasKey":false,"version":"0.1.0"},
+  "cases": {
+    "no-face": "The face is too small in the photo. Move closer so the face fills most of the frame.",
+    "two-faces": "One face per consult. Retake with a single person in the frame.",
+    "oily-microblading": "Powder brows recommended instead of microblading.",
+    "cool-black": "Without a modifier the engine warns: cool drift by year 3. With 15% warm modifier: none.",
+    "low-budget": "Replay takes over: Live paused to protect the demo budget; showing a recorded consult"
+  }
+}
