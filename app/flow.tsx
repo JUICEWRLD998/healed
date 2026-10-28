@@ -38,6 +38,13 @@ export function Flow() {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [client, setClient] = useState<Client | null>(null);
   const [mode, setMode] = useState<Mode>("live");
+  // The snap screen shows the mode before any photo exists, from /api/health. A consult can still fall back to Replay.
+  useEffect(() => {
+    fetch("/api/health")
+      .then((r) => r.json())
+      .then((h: { mode: Mode }) => setMode(h.mode))
+      .catch(() => {});
+  }, []);
   const [reason, setReason] = useState<string | null>(null);
   const [service, setService] = useState<Service>("powder_brow");
   const [pigmentHex, setPigmentHex] = useState(BROW_PIGMENTS[1].hex);
@@ -213,7 +220,12 @@ export function Flow() {
         </p>
       )}
 
-      {phase === "snap" && <Capture onPhoto={(b) => void onPhoto(b)} />}
+      {phase === "snap" && (
+        <>
+          <ModeChip mode={mode} note={mode === "live" ? "Your photo is analysed just now" : "Recorded renders, not your photo"} />
+          <Capture onPhoto={(b) => void onPhoto(b)} />
+        </>
+      )}
 
       {phase === "reading" && (
         <section className={styles.screen} aria-labelledby="reading" aria-live="polite">

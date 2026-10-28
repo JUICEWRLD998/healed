@@ -43,12 +43,12 @@ export function Stepper({ phase }: { phase: Phase }) {
   );
 }
 
-export function ModeChip({ mode, reason }: { mode: Mode; reason?: string | null }) {
+export function ModeChip({ mode, reason, note }: { mode: Mode; reason?: string | null; note?: string }) {
   return (
     <p className={styles.mode} data-mode={mode}>
       <strong>{mode === "live" ? "Live" : "Replay"}</strong>
       <span>
-        {mode === "live"
+        {note ? note : mode === "live"
           ? "Renders made from your photo just now"
           : `Recorded renders, not your photo${reason && reason !== "Replay mode is set." ? `. ${reason}` : ""}`}
       </span>
