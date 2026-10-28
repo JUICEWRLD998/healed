@@ -214,7 +214,7 @@ end costs the number of units measured in Phase 1, recorded in the gate.
 
 ---
 
-## Phase 5: Thin path, end to end (ugly is fine)
+## Phase 5: Thin path, end to end (ugly is fine) — DONE locally 2026-10-28; deployed-URL run waits for the deploy step
 
 **Goal:** a stranger can go from selfie to timeline on the deployed URL.
 

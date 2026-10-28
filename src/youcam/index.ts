@@ -42,8 +42,12 @@ export function chooseMode(input: {
 const real = new Map<string, ReturnType<typeof createRealYouCam>>();
 export const ipCap = new IpCap(loadConfig().capPerIp);
 
-/** Server-only entry point. Routes call this and never touch the key. */
-export async function getYouCam(ip: string, cfg: Config = loadConfig()): Promise<{ yc: YouCam; reason?: string }> {
+/** Server-only entry point. Routes call this and never touch the key. Pass consumeCap=false on follow-up calls of one consult. */
+export async function getYouCam(
+  ip: string,
+  cfg: Config = loadConfig(),
+  consumeCap = true,
+): Promise<{ yc: YouCam; reason?: string }> {
   const replay = () => createReplayYouCam(join(process.cwd(), "fixtures", "replay"));
   if (cfg.mode === "replay" || !cfg.apiKey) return { yc: replay(), reason: chooseMode({ configured: cfg.mode, hasKey: !!cfg.apiKey, balance: null, floor: cfg.floor, ipAllowed: true }).reason };
 
@@ -53,6 +57,6 @@ export async function getYouCam(ip: string, cfg: Config = loadConfig()): Promise
     real.set(cfg.apiKey, adapter);
   }
   const balance = (await adapter.balance?.().catch(() => null)) ?? null;
-  const pick = chooseMode({ configured: cfg.mode, hasKey: true, balance, floor: cfg.floor, ipAllowed: ipCap.allow(ip) });
+  const pick = chooseMode({ configured: cfg.mode, hasKey: true, balance, floor: cfg.floor, ipAllowed: consumeCap ? ipCap.allow(ip) : true });
   return pick.mode === "live" ? { yc: adapter } : { yc: replay(), reason: pick.reason };
 }

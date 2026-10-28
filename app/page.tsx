@@ -1,10 +1,14 @@
+import { Flow } from "./flow";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1>Healed</h1>
-      <p>Skeleton. Feature work starts in Phase 1.</p>
+      <header className={styles.head}>
+        <h1>Healed</h1>
+        <p>See how permanent makeup looks once it has healed and aged, before the needle touches skin.</p>
+      </header>
+      <Flow />
     </main>
   );
 }

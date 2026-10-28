@@ -1,0 +1,47 @@
+.flow { display: grid; gap: 16px; width: min(640px, 100%); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: grid; gap: 14px; }
+.card h2 { margin: 0; font-size: 1.1rem; }
+.hint { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.warn { margin: 0; padding: 10px 12px; border-radius: 8px; background: oklch(0.3 0.08 30); color: oklch(0.95 0.03 30); font-size: 0.9rem; }
+.flag { margin: 0; padding: 8px 12px; border-radius: 8px; background: oklch(0.3 0.06 80); color: oklch(0.95 0.04 80); font-size: 0.9rem; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+.primary, .secondary { font: inherit; font-weight: 600; padding: 12px 18px; border-radius: 10px; cursor: pointer; min-height: 44px; }
+.primary { background: var(--accent); color: oklch(0.2 0.03 168); border: 0; }
+.primary:disabled { opacity: 0.5; cursor: progress; }
+.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); display: inline-flex; align-items: center; }
+.primary:focus-visible, .secondary:focus-visible, .tab:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.viewfinder { position: relative; aspect-ratio: 4 / 3; background: #000; border-radius: 10px; overflow: hidden; }
+.viewfinder video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.guide { position: absolute; inset: 8% 14%; border: 2px dashed var(--accent); border-radius: 50%; pointer-events: none; }
+.mode { margin: 0; font-size: 0.85rem; color: var(--muted); }
+.mode strong { padding: 2px 8px; border-radius: 6px; background: var(--line); color: var(--text); margin-right: 6px; }
+.mode[data-mode="live"] strong { background: var(--accent); color: oklch(0.2 0.03 168); }
+.read { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 0; }
+.read div { background: var(--bg); border-radius: 8px; padding: 8px 10px; }
+.read dt { color: var(--muted); font-size: 0.75rem; }
+.read dd { margin: 2px 0 0; display: flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.read i, .chip i, .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--line); }
+.group { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.group legend { color: var(--muted); font-size: 0.8rem; padding: 0; margin-bottom: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; min-height: 40px; }
+.chip[data-on="true"] { border-color: var(--accent); background: oklch(0.26 0.04 168); }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.custom { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); }
+.custom input:not([type]) { background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px; font: inherit; width: 11ch; }
+.custom input[type="range"] { accent-color: var(--accent); }
+.custom input[aria-invalid="true"] { border-color: oklch(0.7 0.18 30); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tab { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; min-height: 40px; }
+.tab[data-on="true"] { background: var(--accent); color: oklch(0.2 0.03 168); border-color: var(--accent); }
+.frame { margin: 0; display: grid; gap: 6px; }
+.frame img, .swatch { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--bg); }
+.frame figcaption { color: var(--muted); font-size: 0.8rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.drift { margin: 0; font-weight: 600; }
+.drift[data-drift="cool"], .drift[data-drift="warm"] { color: oklch(0.85 0.12 80); }
+.list { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 0.9rem; }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; }
+.consent input { margin-top: 3px; width: 18px; height: 18px; }
+.swatch { display: grid; place-items: end start; }
+.swatch span { margin: 10px; padding: 4px 8px; border-radius: 6px; background: oklch(0.17 0.02 255 / 0.8); color: var(--text); font-size: 0.8rem; }

@@ -8,3 +8,6 @@ evidence/**/*.key
 next-env.d.ts
 evidence/spike/selfie*
 evidence/spike/*.jpg
+
+# replay render stills show a real face: local only
+public/replay/
