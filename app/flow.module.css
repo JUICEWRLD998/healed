@@ -146,3 +146,10 @@ label.bottle:hover:not([data-on="true"]) { border-color: var(--muted); }
 .scrubLabels button:hover:not([data-on="true"]) { color: var(--ink); }
 
 .year { margin-top: 6px; }
+
+/* review fixes: house press scale, image outline, concentric segment radius, keyboard ring on the upload label */
+.primary:active:not(:disabled), .secondary:active:not(:disabled) { transform: scale(0.96); }
+.stage::after, .tileImg::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--img-outline); pointer-events: none; }
+.segments { border-radius: var(--radius-md); }
+.segment { border-radius: 6px; }
+label.secondary:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }

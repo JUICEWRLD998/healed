@@ -137,7 +137,7 @@ export function Capture({ onPhoto }: { onPhoto: (b: Blob) => void }) {
           )}
           <label className={styles.secondary}>
             Upload a photo
-            <input type="file" accept="image/jpeg,image/png" hidden onChange={(e) => void pick(e.target.files?.[0])} />
+            <input type="file" accept="image/jpeg,image/png" className={styles.sr} onChange={(e) => void pick(e.target.files?.[0])} />
           </label>
         </div>
         <p className={styles.hint}>Your photo is not saved on our server, and the analysis copy is deleted after the consult.</p>

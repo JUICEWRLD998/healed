@@ -448,7 +448,7 @@ export function Flow() {
               <ul className={styles.scrubLabels}>
                 {timeline.steps.map((s, i) => (
                   <li key={s.step}>
-                    <button data-on={i === active} data-drift={s.drift} onClick={() => scrubTo(i)}>
+                    <button data-on={i === active} data-drift={s.drift} aria-label={`${STEP_LABEL[s.step]}: ${DRIFT_TEXT[s.drift]}`} title={DRIFT_TEXT[s.drift]} onClick={() => scrubTo(i)}>
                       {STEP_LABEL[s.step]}
                     </button>
                   </li>
@@ -463,7 +463,7 @@ export function Flow() {
             />
             {suggest && ratio === 0 && (
               <button className={styles.primary} disabled={fixing} onClick={() => applyModifier(suggest, 0.15)}>
-                + {suggest} modifier 15%
+                Add {suggest} modifier 15%
               </button>
             )}
             {ratio > 0 && (
@@ -486,7 +486,7 @@ export function Flow() {
               <button className={styles.secondary} onClick={() => setPhase("choose")}>
                 Change pigment
               </button>
-              <button className={styles.primary} onClick={() => setPhase("done")}>
+              <button className={suggest && ratio === 0 ? styles.secondary : styles.primary} onClick={() => setPhase("done")}>
                 Make consult card
               </button>
             </div>

@@ -33,7 +33,7 @@
   {
    "name": "filmstrip: frames captured during the scrub",
    "ok": true,
-   "detail": "16 frames over 1149 ms"
+   "detail": "31 frames over 1165 ms"
   },
   {
    "name": "axe age: no serious/critical",
@@ -56,7 +56,7 @@
    "detail": "Year 3"
   },
   {
-   "name": "click-path: + warm modifier offered on a cool drift",
+   "name": "click-path: Add warm modifier offered on a cool drift",
    "ok": true,
    "detail": ""
   },
@@ -98,7 +98,7 @@
   {
    "name": "CLS under 0.1 across the journey (one page load)",
    "ok": true,
-   "detail": "cls=0.0049"
+   "detail": "cls=0.0051"
   },
   {
    "name": "reduced motion: lands on the first drift step at once, verdict text present",
@@ -145,7 +145,7 @@
  "axe_choose": [],
  "axe_age": [],
  "axe_card": [],
- "cls": 0.004852710621423029,
+ "cls": 0.0051231499563429445,
  "contrast_light": {
   "n": 29,
   "min": 4.85,

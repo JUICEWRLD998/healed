@@ -117,8 +117,8 @@ try {
   await clickText("Year 3");
   await sleep(400);
   check("click-path: Year 3 tab shows Year 3", (await year()) === "Year 3", await year());
-  const hadFix = await clickText("+ warm modifier");
-  check("click-path: + warm modifier offered on a cool drift", hadFix);
+  const hadFix = await clickText("Add warm modifier");
+  check("click-path: Add warm modifier offered on a cool drift", hadFix);
   await until("document.body.innerText.indexOf('modifier added')>-1");
   await until("document.body.innerText.indexOf('Re-rendering')===-1");
   const t1 = await text();
@@ -127,7 +127,7 @@ try {
   await until("document.body.innerText.indexOf('Re-rendering')===-1");
   await sleep(500);
   const t2 = await text();
-  check("click-path: Remove modifier restores the offer", t2.indexOf("+ warm modifier 15%") > -1);
+  check("click-path: Remove modifier restores the offer", t2.indexOf("Add warm modifier 15%") > -1);
   await clickText("Change pigment");
   await until("document.body.innerText.indexOf('Choose the service')>-1");
   check("click-path: Change pigment returns to Choose", true);
@@ -190,7 +190,7 @@ try {
     const ctlRatio=ratio(rgb(getComputedStyle(ctl).color),rgb(getComputedStyle(ctl).backgroundColor));ctl.remove();style.remove();
     const root=getComputedStyle(document.documentElement);
     const hue=n=>rgb(root.getPropertyValue(n).trim());
-    const names=['--accent','--warm','--cool','--caution','--rose'];let min=1e9,pair='';
+    const names=['--accent','--warm','--cool','--caution'];let min=1e9,pair='';
     for(let i=0;i<names.length;i++)for(let j=i+1;j<names.length;j++){const d=dE(hue(names[i]),hue(names[j]));if(d<min){min=d;pair=names[i]+'/'+names[j]}}
     const fails=rows.filter(r=>r.ratio<r.need);
     return {n:rows.length,min:Math.min(...rows.map(r=>r.ratio)),fails:fails.slice(0,6),ctlRatio:+ctlRatio.toFixed(2),minDE:+min.toFixed(1),pair}

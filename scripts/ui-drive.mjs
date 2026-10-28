@@ -90,7 +90,7 @@ try {
     await sleep(1600);
     await shot(`${scheme}-${w}-4-age`);
     const drift = await ev("document.querySelector('[aria-labelledby=age]')?.innerText.indexOf('cool')>-1");
-    if (drift && (await clickText("+ warm modifier"))) {
+    if (drift && (await clickText("Add warm modifier"))) {
       await sleep(1400);
       await shot(`${scheme}-${w}-5-corrected`);
     }
