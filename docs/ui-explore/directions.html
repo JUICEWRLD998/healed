@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Healed directions</title>
+<style>
+:root{--ground:oklch(0.962 0.009 205);--raised:oklch(0.985 0.005 205);--sunk:oklch(0.93 0.012 205);--line:oklch(0.86 0.014 205);
+--ink:oklch(0.25 0.02 45);--muted:oklch(0.47 0.02 45);--accent:oklch(0.48 0.09 178);--on:oklch(0.98 0.01 178);
+--warm:oklch(0.55 0.13 55);--cool:oklch(0.5 0.1 245);--caution:oklch(0.5 0.11 85);--rose:oklch(0.52 0.12 15)}
+*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.45 "Segoe UI",system-ui,sans-serif}
+h1,h2{margin:0;text-wrap:balance}.num{font-variant-numeric:tabular-nums}
+.chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--sunk);font-size:.85rem}
+.btn{background:var(--accent);color:var(--on);border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:650;min-height:44px}
+.face{position:relative;border-radius:14px;overflow:hidden;background:var(--sunk)}
+.face img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.face svg{position:absolute;inset:0;width:100%;height:100%}
+.tick{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:.85rem;color:var(--muted)}
+.tick b{display:block;color:var(--ink)}
+.tile{border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:var(--sunk)}
+.tile img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--cool));}
+.drift{display:inline-block;padding:6px 12px;border-radius:8px;background:oklch(0.93 0.04 245);color:var(--cool);font-weight:650}
+
+/* A: mapping sheet, face large, rail below */
+.A{max-width:1100px;margin:0 auto;padding:24px;display:grid;gap:16px}
+.A .top{display:flex;justify-content:space-between;align-items:center}
+.A .stage{height:min(64vh,620px)}
+.A .year{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1}
+.A .rail{display:grid;gap:10px}
+.A .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* B: pigment ledger, split */
+.B{max-width:1200px;margin:0 auto;padding:24px;display:grid;grid-template-columns:1.15fr 1fr;gap:24px}
+@media(max-width:800px){.B{grid-template-columns:1fr}}
+.B .stage{aspect-ratio:4/5}
+.B .ledger{display:grid;gap:12px;align-content:start}
+.B .bottle{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;background:var(--raised);border:1px solid var(--line);border-radius:12px;padding:10px}
+.B .bottle i{width:44px;height:44px;border-radius:50%}
+.B .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+
+/* C: consent form, document */
+.C{max-width:760px;margin:0 auto;padding:24px}
+.C .sheet{background:var(--raised);border:1px solid var(--line);border-radius:6px;padding:28px;display:grid;gap:18px}
+.C .row{display:grid;grid-template-columns:140px 1fr;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.C .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const d=(new URLSearchParams(location.search).get("d")||"a").toLowerCase();
+const R="../../public/replay/";
+const guide=`<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g stroke="oklch(0.98 0.01 178)" stroke-width=".35" fill="none" vector-effect="non-scaling-stroke"><path d="M48 52 L38 33 L58 29 L82 36"/><circle cx="38" cy="33" r="1.1"/><circle cx="58" cy="29" r="1.1"/><circle cx="82" cy="36" r="1.1"/></g></svg>`;
+const strip=(cls)=>`<div class="${cls}">${["brow-80-90","brow-80-90","brow-50-50","brow-25-20","brow-25-20"].map(f=>`<div class="tile"><img src="${R}${f}.jpg" alt=""></div>`).join("")}</div><div class="tick" style="margin-top:6px">${["Day 0","Week 6","Year 1","Year 2","Year 3"].map(t=>`<span><b class="num">${t}</b></span>`).join("")}</div>`;
+const A=`<main class="A"><div class="top"><h1>Healed</h1><span class="chip"><b>REPLAY</b> recorded renders, not your photo</span></div>
+<div class="face stage"><img src="${R}brow-50-50.jpg" alt="Brows at year 1">${guide}</div>
+<div class="rail"><div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap"><div class="year num">Year 2</div><span class="drift">Cool pigment on warm skin: grey-blue risk</span></div>
+<div class="bar"></div>${strip("tick")}
+<div class="actions"><button class="btn">+ warm modifier 15%</button><span style="color:var(--muted)">Estimate range, lighter to darker. A band, not a promise.</span></div></div></main>`;
+const B=`<main class="B"><div><div class="face stage"><img src="${R}brow-50-50.jpg" alt="Brows at year 1">${guide}</div></div>
+<div class="ledger"><div style="display:flex;justify-content:space-between"><h1>Healed</h1><span class="chip"><b>REPLAY</b></span></div>
+<h2 class="num" style="font-size:2.6rem;font-weight:800;letter-spacing:-.03em">Year 2</h2><span class="drift" style="justify-self:start">Drifts cool: grey-blue cast</span>
+<div class="bottle"><i style="background:#3a3138"></i><div><b>Cool dark brown</b><br><span style="color:var(--muted)">#3a3138</span></div><span class="chip">in use</span></div>
+<div class="bottle"><i style="background:#d9822b"></i><div><b>Warm modifier</b><br><span style="color:var(--muted)">15% added</span></div><button class="btn">Add</button></div>
+${strip("strip")}</div></main>`;
+const C=`<main class="C"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h1>Consult card</h1><span class="chip"><b>REPLAY</b></span></div>
+<div class="row"><b>Service</b><span>Powder brows in #3a3138, 15% warm corrector</span></div>
+<div class="row"><b>Healed</b><div>${strip("strip")}</div></div>
+<div class="row"><b>Drift</b><span class="drift" style="justify-self:start">Year 2 drifts cool before correction</span></div>
+<div class="row"><b>Consent</b><label><input type="checkbox"> I understand these are estimates and agree to go ahead.</label></div>
+<button class="btn" style="justify-self:start">Print consult card</button></div></main>`;
+document.getElementById("root").innerHTML={a:A,b:B,c:C}[d];
+</script>
+</body>
+</html>

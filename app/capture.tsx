@@ -91,42 +91,67 @@ export function Capture({ onPhoto }: { onPhoto: (b: Blob) => void }) {
   }
 
   return (
-    <section className={styles.card} aria-labelledby="snap">
-      <h2 id="snap">1. Snap</h2>
-      <p className={styles.hint}>
-        Look straight at the camera. The face should fill most of the width. Use even, soft light.
-      </p>
-      {cam === "on" && (
-        <div className={styles.viewfinder}>
-          <video ref={video} playsInline muted aria-label="Camera preview" />
-          <div className={styles.guide} aria-hidden />
-        </div>
-      )}
-      <div className={styles.row}>
-        {cam !== "on" ? (
-          <button className={styles.primary} onClick={start}>
-            Use camera
-          </button>
-        ) : (
-          <button className={styles.primary} onClick={snap}>
-            Take photo
-          </button>
-        )}
-        <label className={styles.secondary}>
-          Upload a photo
-          <input type="file" accept="image/jpeg,image/png" hidden onChange={(e) => void pick(e.target.files?.[0])} />
-        </label>
+    <section className={styles.screen} aria-labelledby="snap">
+      <div className={styles.stage}>
+        {cam === "on" && <video ref={video} playsInline muted aria-label="Camera preview" />}
+        {/* The brow-mapping string line: nose wing, inner corner, arch, tail. A framing guide only; it is never
+            drawn over a render, because a line that misses the brow would be a false claim. */}
+        <svg className={`${styles.guideSvg} ${cam === "on" ? styles.guideOn : ""}`} viewBox="0 0 100 125" aria-hidden>
+          <g fill="none" stroke="currentColor" strokeWidth="0.5" vectorEffect="non-scaling-stroke">
+            <ellipse cx="50" cy="62" rx="31" ry="42" strokeDasharray="2 2" opacity="0.6" />
+            <path d="M50 24 V102" opacity="0.35" />
+            <path d="M30 54 H70" opacity="0.35" />
+            <path d="M33 54 Q38 50 43 54 Q38 57 33 54 M57 54 Q62 50 67 54 Q62 57 57 54" opacity="0.7" />
+            {/* three-point string line, drawn from the nose wing on each side */}
+            <path d="M44 82 L43 44 M44 82 L35 41 M44 82 L28 46" />
+            <path d="M56 82 L57 44 M56 82 L65 41 M56 82 L72 46" />
+            <g fill="currentColor" stroke="none">
+              <circle cx="43" cy="44" r="1.1" />
+              <circle cx="35" cy="41" r="1.1" />
+              <circle cx="28" cy="46" r="1.1" />
+              <circle cx="57" cy="44" r="1.1" />
+              <circle cx="65" cy="41" r="1.1" />
+              <circle cx="72" cy="46" r="1.1" />
+              <circle cx="44" cy="82" r="1.1" />
+              <circle cx="56" cy="82" r="1.1" />
+            </g>
+          </g>
+        </svg>
       </div>
-      {cam === "denied" && (
-        <p className={styles.warn} role="alert">
-          Camera blocked. Upload a front-facing photo instead.
+      <div className={styles.side}>
+        <h2 id="snap" className={styles.title}>
+          Snap one straight-on photo
+        </h2>
+        <p className={styles.hint}>
+          Look at the camera with the face filling most of the frame, in even, soft light. Brows must be clear of hair.
         </p>
-      )}
-      {warn && (
-        <p className={styles.warn} role="alert">
-          {warn}
-        </p>
-      )}
+        <div className={styles.row}>
+          {cam !== "on" ? (
+            <button className={styles.primary} onClick={start}>
+              Use camera
+            </button>
+          ) : (
+            <button className={styles.primary} onClick={snap}>
+              Take photo
+            </button>
+          )}
+          <label className={styles.secondary}>
+            Upload a photo
+            <input type="file" accept="image/jpeg,image/png" className={styles.sr} onChange={(e) => void pick(e.target.files?.[0])} />
+          </label>
+        </div>
+        <p className={styles.hint}>Your photo is not saved on our server, and the analysis copy is deleted after the consult.</p>
+        {cam === "denied" && (
+          <p className={styles.warn} role="alert">
+            Camera blocked. Upload a front-facing photo instead.
+          </p>
+        )}
+        {warn && (
+          <p className={styles.warn} role="alert">
+            {warn}
+          </p>
+        )}
+      </div>
     </section>
   );
 }

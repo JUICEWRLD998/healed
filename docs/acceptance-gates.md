@@ -108,3 +108,14 @@ Gate text: a cold visitor on the live URL gets their own timeline in under 60 s,
 - Delete after consent: `/api/remove` returned deleted in both modes.
 - Gate 0 re-check on the Phase 5 build: `grep -r YOUCAM_API_KEY .next/static` returns nothing.
 - Tests: 75 pass, 1 skipped (live test, needs `LIVE_TEST=1`). `tsc --noEmit` clean.
+
+## Gate 6 evidence, 2026-10-28 (PASSED in Replay; Live path through the new screens NOT re-run)
+
+Gate text: `ui-studio` quality bar and scorer pass on the rendered page, screenshots at all eight widths saved under `evidence/ui/`.
+
+- Eight widths (320, 375, 414, 768, 1024, 1280, 1440, 1920), light and dark, 96 screenshots, zero horizontal overflow (`node scripts/ui-drive.mjs <port> evidence/ui <scheme>`). PNGs show a real face and are git-ignored; they stay local.
+- `node scripts/ui-verify.mjs <port> evidence/ui/verify`: 28 checks pass, 0 fail. Planted controls registered first (broken image, missing alt, 1:1 contrast pair). Console errors 0, axe serious or critical 0 on snap, choose, age and card, CLS 0.0003, click-path on every primary-journey button, reduced-motion end state, rendered contrast on 29 text runs in both themes (lowest 4.85 light, 6.11 dark), role-hue ΔE76 22.1 or more.
+- Scrub filmstrip (36 frames) looked at: Day 0, Week 6, Year 1, drift chip last, as the beat sheet says.
+- `ui-score` round 4: 77/100, controls passed, zero major tells. Known artefact: accent budget reads 40.6% because the scorer reads the tinted dark ground as an accent. The real accent covers about 0.5% of the viewport.
+- Review pass (`better-interface` with the six domain skills): two HIGH fixed (keyboard-unreachable upload, drift shown by colour only on the scrub labels), three MEDIUM and three LOW fixed. `ecc:design-system` audit: no dimension under 7 (lowest: spacing rhythm 7, ad hoc steps in `app/flow.module.css`). Semi-blind critic on the first viewport at 1280 and 375: product, primary action and most important element match the hierarchy contract.
+- Open, named: spacing has no token scale; replay renders are about 1.2 MB each (local fixtures; Phase 7 frozen run must be compressed); Live mode not re-run through the new screens (46 units); the Choose screen is a uniform rounded-card grammar.
