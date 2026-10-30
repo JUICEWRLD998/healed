@@ -7,19 +7,8 @@ import styles from "./flow.module.css";
 export type Mode = "live" | "replay";
 export type Phase = "snap" | "reading" | "choose" | "rendering" | "timeline" | "done";
 
-export const STEP_LABEL: Record<string, string> = {
-  day0: "Day 0",
-  week6: "Week 6",
-  year1: "Year 1",
-  year2: "Year 2",
-  year3: "Year 3",
-};
-
-export const DRIFT_TEXT = {
-  none: "No colour shift expected",
-  cool: "Drifts cool: grey or blue cast",
-  warm: "Drifts warm: orange cast",
-} as const;
+import { DRIFT_TEXT, STEP_LABEL } from "./labels";
+export { DRIFT_TEXT, STEP_LABEL };
 
 const STEPS: { id: Phase[]; name: string }[] = [
   { id: ["snap"], name: "Snap" },

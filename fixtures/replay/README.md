@@ -1,1 +1,1 @@
-Recorded real YouCam responses from the Phase 1 spike (tone and Fitzpatrick from one photo, skin from another). Render images are not committed: they show real faces. Phase 7 replaces this set with a frozen run on a consenting adult.
+Recorded real YouCam responses from the Phase 1 spike (tone and Fitzpatrick from one photo, skin from another). Render images are not committed: they show real faces. Replacing this set with a frozen run on a consenting adult is still open (Phase 7).

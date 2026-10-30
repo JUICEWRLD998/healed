@@ -11,7 +11,7 @@ Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate c
 | 4 | Adapter | Contract test passes on both adapters; units per live consult recorded. | PASSED 2026-10-27 (66 tests; live consult 46 units, see below) |
 | 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
 | 6 | UI | ui-studio scorer passes on the rendered page; screenshots at 8 widths in `evidence/ui/`. | NOT TESTED |
-| 7 | Judge surfaces | All five break-it inputs return their stated outcome on the live URL. | NOT TESTED |
+| 7 | Judge surfaces | All five break-it inputs return their stated outcome on the live URL. | PARTIAL 2026-10-30: all five pass on local `next start`; live URL not deployed yet; frozen run NOT DONE (needs a consenting face and 46 units) |
 | 8 | Calibration | Numbers, pair list and extractor positive control under `evidence/calibration/`; `/calibration` shows them. | NOT TESTED |
 | 9 | Submit | Submitted on Devpost, confirmation saved, live URL answering. | NOT TESTED |
 
@@ -119,3 +119,28 @@ Gate text: `ui-studio` quality bar and scorer pass on the rendered page, screens
 - `ui-score` round 4: 77/100, controls passed, zero major tells. Known artefact: accent budget reads 40.6% because the scorer reads the tinted dark ground as an accent. The real accent covers about 0.5% of the viewport.
 - Review pass (`better-interface` with the six domain skills): two HIGH fixed (keyboard-unreachable upload, drift shown by colour only on the scrub labels), three MEDIUM and three LOW fixed. `ecc:design-system` audit: no dimension under 7 (lowest: spacing rhythm 7, ad hoc steps in `app/flow.module.css`). Semi-blind critic on the first viewport at 1280 and 375: product, primary action and most important element match the hierarchy contract.
 - Open, named: spacing has no token scale; replay renders are about 1.2 MB each (local fixtures; Phase 7 frozen run must be compressed); Live mode not re-run through the new screens (46 units); the Choose screen is a uniform rounded-card grammar.
+
+## Gate 7 evidence, 2026-10-30 (PARTIAL: five break-it inputs pass locally; live URL, frozen run and a real two-face photo NOT done)
+
+- `/judges` (no login, 375 and 1280 wide, zero horizontal overflow): six numbered steps, the engine's own output for a cool soft black on warm skin with and without a 15% warm modifier, a "Try it with your own face" link to Live, and the break-it panel. Screenshots in `evidence/ui/judges/` (git-ignored if they show a face; these show none).
+- Break-it, run from a clean headless Chrome against `HEALED_MODE=replay npx next start -p 3107` by clicking each Run button. Cases live in `src/judges/breakit.ts`, tests in `src/judges/breakit.test.ts` (6 pass), served by `/api/breakit?id=`:
+  1. tiny face: "The face is too small in the photo. Move closer so the face fills most of the frame." Upstream code `error_src_face_too_small` was seen live in Phase 1, but here the code is supplied to our error mapper, not produced by a photo.
+  2. two faces: "One face per consult. Retake with a single person in the frame." UNVERIFIED: the upstream code for two faces was never captured; the mapper matches by keyword. The panel tags it UNVERIFIED.
+  3. microblading, oiliness 82: recommends powder brows and gives the E4/E8 reason (`advise`).
+  4. cool black `#2a2a2e` on skin `#c68e6b`: year 1 drifts cool; with a 15% warm modifier no step drifts (`renderTimeline`).
+  5. balance 100 under floor 150: Replay takes over with "Live paused to protect the demo budget; showing a recorded consult" (`chooseMode`).
+- Mode on every screen: `ModeChip` on choose, timeline, card and `/judges`. `/api/health` returns `{mode, version}`.
+- Privacy sentence is on the capture screen under the upload buttons. `/api/read` holds the image in memory only; `/api/remove` deletes the upload after consent.
+- Key check on the Phase 7 build: `grep -r YOUCAM_API_KEY .next/static` returns nothing.
+
+### Security review of key handling and the upload route (manual, `ecc:security-review` scope)
+- Key: read only in `src/youcam/index.ts` from `process.env`; no `NEXT_PUBLIC_*`; error bodies go through `failure()` which returns a fixed sentence.
+- Upload: `/api/read` checks type (JPEG or PNG) and 8 MB; nothing written to disk or logs.
+- Residual risk 1: the per-IP cap trusts `x-forwarded-for`, which is spoofable off Vercel. On Vercel the platform sets it.
+- Residual risk 2: `/api/frame` and `/api/render` take a client-supplied `fileId` and are not rate limited per IP, so a caller who holds a valid `fileId` can spend render units. `fileId` is 64 characters and unguessable, but there is no cap.
+- Residual risk 3: the in-memory cap and cache reset on every serverless cold start.
+
+### Open for Gate 7
+- Deploy to Vercel, then re-run the five cases from a clean browser on the live URL.
+- Frozen run under `evidence/frozen-run/` needs one consenting face and 46 units; link it from the top of the README afterwards.
+- Capture a real two-face photo response to replace the UNVERIFIED keyword match.
