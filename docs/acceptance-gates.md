@@ -12,7 +12,7 @@ Status values: PASSED, NOT TESTED, FAILED. Update with evidence the day a gate c
 | 5 | Thin path | A cold visitor gets their own timeline in under 60 s on the live URL; screen-recorded. | NOT TESTED |
 | 6 | UI | ui-studio scorer passes on the rendered page; screenshots at 8 widths in `evidence/ui/`. | NOT TESTED |
 | 7 | Judge surfaces | All five break-it inputs return their stated outcome on the live URL. | NOT TESTED |
-| 8 | Calibration | Numbers, pair list and extractor positive control under `evidence/calibration/`; `/calibration` shows them. | NOT TESTED |
+| 8 | Calibration | Numbers, pair list and extractor positive control under `evidence/calibration/`; `/calibration` shows them. | NOT PASSED 2026-10-30: tooling and positive control done; no valid pair set, so no number (see below) |
 | 9 | Submit | Submitted on Devpost, confirmation saved, live URL answering. | NOT TESTED |
 
 ---
@@ -129,3 +129,10 @@ Gate text: all five break-it inputs return their stated outcome on the live URL 
 - Privacy audit: `grep -rn "console\.\|writeFile\|createWriteStream\|tmpdir" app lib src` finds nothing outside tests. The only `YOUCAM_API_KEY` read in `app/` or `lib/` is the boolean in `/api/health`. Gate 0 grep on the Phase 7 build returns nothing.
 - Two-faces outcome comes from keyword matching on `error_multiple_faces`, a code not yet seen live (UNVERIFIED, see `CLAIMS.md`). Tiny face uses `error_src_face_too_small`, observed live in Phase 1.
 - NOT done: (1) the deployed URL and clean-browser run, which wait for the deploy step; (2) the frozen production run under `evidence/frozen-run/`, which needs a consenting face and a YouCam key that this session does not have; (3) a live-mode run through `/judges` "try with your own face".
+
+## Gate 8 evidence, 2026-10-30 (NOT PASSED: tooling done, no calibration number)
+
+- Done: extractor with one fixed sampling rule (`src/calibration/extract.ts`), held-out scorer (`src/calibration/score.ts`), planted positive control that the extractor must reproduce (`src/calibration/calibration.test.ts`, 6 tests), and `/calibration`, which prints a number only when held-out pairs exist and otherwise says "No calibration number yet".
+- Search pass: about 8 same-procedure fresh and healed pairs found, all from one pigment publisher, one with a stated healed age, five of eight lips, some retouched. Full list and reasons in `evidence/calibration/CANDIDATES.md`.
+- Decision: below the 10-pair, 3-source bar, so `evidence/calibration/pairs.json` stays empty and no figure appears in the README, UI or video. The engine constants stay ASSUMED.
+- To close the gate: at least 10 pairs from 3 or more independent sources with stated healed ages, measured skin-referenced, scored on a held-out split. Not started.
