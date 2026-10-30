@@ -17,4 +17,4 @@ _TBD after deploy._
 _TBD._
 
 ## What this is NOT
-_TBD._
+- Not calibrated. The healed model is built from cited rules and ASSUMED constants. No measured fresh-versus-healed pair set backs it yet, so no accuracy figure is claimed (see `/calibration` and `evidence/calibration/CANDIDATES.md`).
